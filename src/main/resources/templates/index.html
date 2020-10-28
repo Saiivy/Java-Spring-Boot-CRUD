@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>DashBoard</title>
+</head>
+<body>
+
+	<h2>Super Hero Dash Board</h2>
+	<h2>Create A Mission</h2>
+	<a href="#" th:href="@{/createMission}">Create A Mission</a>
+	<h2>View Mission's For:</h2>
+			<form method = "get" th:action ="@{/viewMissions/}">
+	
+		<Select name = "hero">
+			<option th:each="hero: *{mission.heroes}" th:text="${hero}"
+				th:value="${hero}"></option>
+		</Select> 
+		<input type ="Submit" value = "Check Missions">
+</form>	</body>
+</html>
