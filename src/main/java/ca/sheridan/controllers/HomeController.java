@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -15,23 +16,33 @@ public class HomeController {
 
 	private DatabaseAccess database;
 
-	/*
-	 * Returns main-page.
+	/**
+	 * Using this we will redirect users to index page
+	 * @param model
+	 * @param mission
+	 * @return index
 	 */
 	@GetMapping("/")
 	public String homePage(Model model, Mission mission) {
 		model.addAttribute("mission", mission);
-		System.out.println(mission);
 		return "index";
 	}
-
+    
+	/*
+	 * A constructor for the database access
+	 * to be used here for making CRUD operations using 
+	 * user's data
+	 */
 	public HomeController(DatabaseAccess database) {
 		this.database = database;
 	}
 
-	/*
-	 * Returns Create-Mission Page
-	 */
+    /**
+     * Whenever user clicks on the link, he will be redirected to Createmission page,
+     * where he can add data to be added to database
+     * @param model
+     * @return create mision
+     */
 	@GetMapping("/createMission")
 	public String createMission(Model model) {
 		model.addAttribute("mission", new Mission());
@@ -69,5 +80,19 @@ public class HomeController {
 		model.addAttribute("hero",hero);
 		return "viewMissions";
 
+	}
+	
+	/**
+	 * Invoking the deleteMission method using database constructor
+	 * which will delete the mission user desires using an unique ID.
+	 * @param id
+	 * @return index
+	 */
+	@GetMapping("/delete/{id}")
+	public String deleteMission(@PathVariable Long id) {
+		database.deleteMission(id);
+			return "redirect:/";
+		        
+		
 	}
 }

@@ -25,9 +25,8 @@ There are no mission for:
 <td th:text = "${mission.title}"> </td>
 <td th:text = "${mission.primaryWeapon}"> </td>
 <td th:text = "${mission.secondaryWeapon}"> </td>
-<td><a href="#" th:href="@{edit/} + ${mission.id}">Edit </a></td>
-<td> <a href="#" th:href="@{delete/} + ${mission.id}">Delete </a></td>
-<td > </td>
+<td><a href="#" th:href="@{/edit/} + ${mission.id}">Edit </a></td>
+<td> <a href="#" th:href="@{/delete/} + ${mission.id}">Delete </a></td>
 
 </tr>
 
