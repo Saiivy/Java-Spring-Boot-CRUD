@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Mission</title>
+</head>
+<body>
+
+
+<h2> Update A Mission</h2>
+<form action ="#" th:action ="@{/updateMission}" th:object = "${mission}" method="post">
+
+Mission Name: <input type="text" name="missionName" th:field="*{title}">
+
+<h2>Choose Your Hero:</h2>
+
+<Select th:field="*{hero}">
+<option th:each = "hero : *{heroes}"
+th:text ="${hero}" th:value="${hero}">
+</option>
+</Select>
+
+<h2> Chose The Weapons</h2>
+<input type = "hidden" th:field = "*{id}">
+Weapon 1: <input type="text" name="weapon 1" th:field="*{primaryWeapon}">
+Weapon 2: <input type="text" name="weapon 2" th:field="*{secondaryWeapon}">
+
+<input type = "submit" value ="Update Mission">
+
+</form>
+</body>
+</html>
