@@ -1,13 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org/">
 <head>
 <meta charset="ISO-8859-1">
-<title>View Missions!</title>
+<title>View Missions</title>
 </head>
 <body>
+<div th:if = "${missionList.empty}">
+There are no mission for:
+<div  th:text="${hero}"></div>
+</div>
+<div th:unless = "${missionList.empty}">
 <table>
-<td> </td>
-<tr></tr>
+<tr>
+<th> Hero Name </th>
+<th>Mission Title</th>
+<th>Primary Weapon </th>
+<th> Secondary Weapon</th>
+<th> Edit</th>
+<th>Delete</th>
+</tr>
+
+<tr th:each = "mission: ${missionList}"> 
+<td th:text = "${mission.hero}"> </td>
+<td th:text = "${mission.title}"> </td>
+<td th:text = "${mission.primaryWeapon}"> </td>
+<td th:text = "${mission.secondaryWeapon}"> </td>
+<td><a href="#" th:href="@{edit/} + ${mission.id}">Edit </a></td>
+<td> <a href="#" th:href="@{delete/} + ${mission.id}">Delete </a></td>
+<td > </td>
+
+</tr>
+
 </table>
+
+</div>
+
 </body>
 </html>

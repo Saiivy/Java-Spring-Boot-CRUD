@@ -1,7 +1,5 @@
 package ca.sheridan.controllers;
 
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,12 +37,19 @@ public class HomeController {
 		model.addAttribute("mission", new Mission());
 		return "createMission";
 	}
-
+    
+	/**
+	 * This method allows us to add mission to database 
+	 * calling the mission method using database constructor 
+	 * @param mission
+	 * @param model
+	 * @return index page.
+	 */
 	@PostMapping("/addMission")
 	public String processForm(@ModelAttribute Mission mission, Model model) {
-		System.out.println(mission);
-		int result = database.addMission(mission);
-		System.out.println(result);
+		database.addMission(mission);
+		String message = "Mission Created Successfully";
+		model.addAttribute("message",message);
 		return "index";
 
 	}
@@ -58,12 +63,11 @@ public class HomeController {
 	 * @return viewMission page.
 	 */
 	@GetMapping("/viewMissions/")
-	public String viewMission(Mission mission, @RequestParam("hero") String hero) {
-		database.viewMission(hero);
-		int result = database.viewMission(hero);
-		System.out.println(result);
-		System.out.println(hero);
-		return "index";
+	public String viewMission(@RequestParam("hero") String hero,Model model) {   
+		System.out.println(database.viewMission(hero));
+		model.addAttribute("missionList",database.viewMission(hero));
+		model.addAttribute("hero",hero);
+		return "viewMissions";
 
 	}
 }
