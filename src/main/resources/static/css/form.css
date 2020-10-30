@@ -1,0 +1,118 @@
+@charset "ISO-8859-1";
+
+<!--
+CSS FOR SELECT OPTION TAGS TAKEN FROM W3SCHOOLS !!- UPTO LINE 63 
+https: //www.w3schools.com /howto /tryit.asp ?filename =tryhow_custom_select>.heroSLCT
+	{
+	position: relative;
+	font-family: Arial;
+}
+
+.heroSLCT select {
+	display: none; /*hide original SELECT element:*/
+}
+
+.heroSLCT {
+	background-color: DodgerBlue;
+}
+
+/*style the arrow inside the select element:*/
+.heroSLCT:after {
+	position: absolute;
+	content: "";
+	top: 14px;
+	right: 10px;
+	width: 0;
+	height: 0;
+	border: 6px solid transparent;
+	border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.heroSLCT:after {
+	border-color: transparent transparent #fff transparent;
+	top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.heroSLCT div, .heroSLCT {
+	color: #ffffff;
+	padding: 8px 16px;
+	border: 1px solid transparent;
+	border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+	cursor: pointer;
+	user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+	position: absolute;
+	background-color: DodgerBlue;
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+	display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.createBtn {
+	background-color:DodgerBlue;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.createBtn:hover{
+	background-color: #808000;
+}
+
+a{
+	text-decoration: none;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #808000;
+}
+ 
+ h1{
+ text-align:center;
+ }
+ h5{
+ 
+ }
+ 
+ div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+input[type=text], .select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

@@ -54,7 +54,7 @@ public class HomeController {
 	 * This method allows us to add mission to database calling the mission method
 	 * using database constructor
 	 * 
-	 * @param mission: modelatttribute from create_mission
+	 * @param mission: model attribute from create_mission
 	 * @param model
 	 * @return index page.
 	 */
@@ -116,7 +116,5 @@ public class HomeController {
 		database.updateMission(mission);
 		return "redirect:/"; 
 		
-	}
-	
-	
+	}	
 }

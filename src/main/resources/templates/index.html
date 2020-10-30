@@ -2,20 +2,26 @@
 <html xmlns:th="https://www.thymeleaf.org/">
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" th:href="@{/css/form.css}">
 <title>DashBoard</title>
 </head>
 <body>
-
-	<h2>Super Hero Dash Board</h2>
-	<h2>Create A Mission</h2>
-	<a href="#" th:href="@{/createMission}">Create A Mission</a>
-	<h2>View Mission's For:</h2>
-			<form method = "get" th:action ="@{/viewMissions/}">
-	
-		<Select name = "hero">
-			<option th:each="hero: *{mission.heroes}" th:text="${hero}"
-				th:value="${hero}"></option>
-		</Select> 
-		<input type ="Submit" value = "Check Missions">
-</form>	</body>
+	<div>
+	<!-- Simple page which has links to other pages for creating mission -->
+		<!-- On this page, we can view missions using hero name, Name is coming for controller as an object -->
+	    <h1>Cool App for Storing Hero's Secret Missions</h1>
+		<!-- will send the selected name to view mission mapping using this form to check if there are any mission for the hero -->
+		<form method="get" th:action="@{/viewMissions/}">
+		<h3> Check Mission</h3>
+			<Select class="heroSLCT" name="hero">
+				<option th:each="hero: *{mission.heroes}" th:text="${hero}"
+					th:value="${hero}"></option>
+			</Select> 
+			<input type="Submit" value="Check Missions">
+		</form>
+		<h3>OR</h3>
+		<button class ="createBtn"><a href = "" th:href="@{/createMission}"> Add a Mission </a></button>
+		
+	</div>
+</body>
 </html>

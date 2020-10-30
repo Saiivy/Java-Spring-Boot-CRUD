@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th= "https://www.thymeleaf.org/">
+<html xmlns:th="https://www.thymeleaf.org/">
 <head>
 <meta charset="ISO-8859-1">
 <title>Create A Mission!</title>
+<link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
-
-<h2> Create A Mission</h2>
-
-
-<form action ="#" th:action ="@{/addMission}" th:object = "${mission}" method="post">
-
-Mission Name: <input type="text" name="missionName" th:field="*{title}">
-
-<h2>Choose Your Hero:</h2>
-
-<Select th:field="*{hero}">
-<option th:each = "hero : *{heroes}"
-th:text ="${hero}" th:value="${hero}">
-</option>
-</Select>
-
-<h2> Chose The Weapons</h2>
-Weapon 1: <input type="text" name="weapon 1" th:field="*{primaryWeapon}">
-Weapon 2: <input type="text" name="weapon 2" th:field="*{secondaryWeapon}">
-
-<input type = "submit" value ="Create Mission">
-
-</form>
+<div>
+	<!-- Redirect form to add mission to add the missions into obejct, object is binded with the form -->
+	<form action="#" th:action="@{/addMission}" th:object="${mission}" method="post">
+	
+	<!-- Input types and their corresponding mission object fields -->
+	<label for ="missionName">Mission Title</label>
+	<input type="text" name="missionName" th:field="*{title}">
+		<label for ="heroName">Hero Name</label>
+		<Select class="select" th:field="*{hero}">
+		<option th:each="hero : *{heroes}" th:text="${hero}" th:value="${hero}"></option>
+		</Select>
+		<label for ="primaryWeapon">Primary Weapon</label>
+		 <input type="text" name="weapon 1" th:field="*{primaryWeapon}"> 
+		 <label for ="secondaryWeapon">Secondary Weapon</label> 
+		 <input type="text" name="weapon 2" th:field="*{secondaryWeapon}"> 
+		 <input type="submit" value="Create Mission">
+	</form>
+	</div>
 </body>
 </html>
